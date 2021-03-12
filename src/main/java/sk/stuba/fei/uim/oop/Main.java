@@ -142,8 +142,26 @@ public class Main {
             }
         }
 
-        Collections.sort(list);
+        Comparator<Zivocich> comparator = new Comparator<Zivocich>()
+        {
+            @Override
+            public int compare(Zivocich o1, Zivocich o2) {
+                if (o1.getClass() == o2.getClass()) {
+                    if (o1.getClass() == Clovek.class) {
+                        return ((Clovek) o1).vek - ((Clovek) o2).vek;
+                    } else {
+                        return ((Pes) o1).vek - ((Pes) o2).vek;
+                    }
+                } else {
+                    return o1.pocet_noh - o2.pocet_noh;
 
+                }
+            }
+        };
+
+        Collections.sort(list,comparator);
+
+        System.out.println();
 
         for(var elem: list){
             if (elem.getClass()==Clovek.class){
