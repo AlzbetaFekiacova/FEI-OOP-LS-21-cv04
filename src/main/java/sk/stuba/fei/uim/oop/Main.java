@@ -4,6 +4,7 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -62,6 +63,9 @@ public class Main {
             }
         }
 */
+
+        //nprvkove pole
+        /*
         int n = ZKlavesnice.readInt("Zadaj prirodzene cislo: ");
         int k = ZKlavesnice.readInt("Zadaj k, prirodzene cislo");
         while(n < 2*k  || k < 1){
@@ -87,6 +91,26 @@ public class Main {
 
         for (var elem:ncisel){
             System.out.println(elem);
+        }*/
+
+        List<List<Integer>> dvojrozmerne_pole = new ArrayList<>();
+        int r = ZKlavesnice.readInt("Zadaj pocet riadkov");
+        int s = ZKlavesnice.readInt("Zadaj pocet stlpcov");
+        int c;
+        for (int i = 0; i < r; i++){
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int j =0; j < s; j++){
+                c = ZKlavesnice.readInt("Zadaj cislo, co chces pridat:");
+                tmp.add(c);
+            }
+            dvojrozmerne_pole.add(tmp);
+        }
+
+        for (var elem:dvojrozmerne_pole){
+            for (var e:elem){
+                System.out.println(e + " ");
+            }
+            System.out.println();
         }
     }
 }
