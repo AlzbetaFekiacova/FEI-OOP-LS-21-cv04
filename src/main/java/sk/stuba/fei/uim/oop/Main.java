@@ -6,6 +6,24 @@ import java.util.*;
 
 public class Main {
 
+    static void vyprazdenie(Map<String, String> slovnik) {
+        /*
+        for(Iterator<String> iterator = slovnik.keySet().iterator(); iterator.hasNext(); ) {
+            String key = iterator.next();
+            if(slovnik.size() > 0) {
+                iterator.remove();
+            }
+
+        */
+
+        var iterator = slovnik.keySet().iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            iterator.remove();
+        }
+    }
+
+
     static void pridavanie(Map<String, String> slovnik) {
         int pocet = ZKlavesnice.readInt("Zadaj kolko slov chces zadat");
         int i = 0;
@@ -20,6 +38,27 @@ public class Main {
             String preklad = ZKlavesnice.readString("Zadaj preklad slova");
             slovnik.put(slovo, preklad);
             i++;
+        }
+    }
+
+    static void citanie(Map<String, String> mapa){
+        String slovo = ZKlavesnice.readString("Zadaj hladane slovo");
+        if(mapa.containsKey(slovo)){
+            System.out.println(mapa.get(slovo));
+        }
+        else {
+            System.out.println("Slovo sa tam nechadza");
+        }
+
+    }
+
+    static void mazanie (Map<String, String> mapa){
+        String slovo = ZKlavesnice.readString("Zadaj slovo, co chces zmazat");
+        if(mapa.containsKey(slovo)){
+            mapa.remove(slovo);
+        }
+        else {
+            System.out.println("Take slovo sa tam nenachadza");
         }
     }
     public static void main(String[] args) {
@@ -204,6 +243,13 @@ public class Main {
 
         }
 
+        citanie(slovnik);
+        mazanie(slovnik);
+        for (var elem:slovnik.keySet()){
+            System.out.println(elem+ " " + slovnik.get(elem));
 
+        }
+
+        vyprazdenie(slovnik);
     }
 }
