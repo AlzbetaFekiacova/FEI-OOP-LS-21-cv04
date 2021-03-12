@@ -2,9 +2,7 @@ package sk.stuba.fei.uim.oop;
 
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -93,6 +91,8 @@ public class Main {
             System.out.println(elem);
         }*/
 
+        //dvojromerne pole
+        /*
         List<List<Integer>> dvojrozmerne_pole = new ArrayList<>();
         int r = ZKlavesnice.readInt("Zadaj pocet riadkov");
         int s = ZKlavesnice.readInt("Zadaj pocet stlpcov");
@@ -111,6 +111,47 @@ public class Main {
                 System.out.println(e + " ");
             }
             System.out.println();
+        }*/
+        List<Zivocich> list = new ArrayList<>();
+        int n = ZKlavesnice.readInt("Zadaj pocet zivocichov") ;
+        for(int i = 0; i < n; i++){
+            int c = ZKlavesnice.readInt("Zadaj 1 pre cloveka, 2 pre psa");
+            if (c == 1){
+                String meno = ZKlavesnice.readString("Zadaj meno cloveka");
+                String priezvisko = ZKlavesnice.readString("Zadaj priezvisko cloveka");
+                int vek = ZKlavesnice.readInt("Zadaj vek cloveka");
+                list.add(new Clovek(meno, priezvisko, vek));
+            }
+            else if (c == 2){
+                String meno = ZKlavesnice.readString("Zadaj meno psa");
+                int vek = ZKlavesnice.readInt("Zadaj vek psa");
+                list.add(new Pes(meno, vek));
+            }
+
+            else{
+                System.out.println("Chyba");
+            }
+        }
+
+        for(var elem: list){
+            if (elem.getClass()==Clovek.class){
+                System.out.println(((Clovek) elem).krstne_meno + " " + ((Clovek) elem).priezvisko);
+            }
+            else {
+                System.out.println(((Pes)elem).meno);
+            }
+        }
+
+        Collections.sort(list);
+
+
+        for(var elem: list){
+            if (elem.getClass()==Clovek.class){
+                System.out.println(((Clovek) elem).krstne_meno + " " + ((Clovek) elem).priezvisko);
+            }
+            else {
+                System.out.println(((Pes)elem).meno);
+            }
         }
     }
 }
