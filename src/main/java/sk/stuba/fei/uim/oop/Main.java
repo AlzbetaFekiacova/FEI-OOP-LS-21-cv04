@@ -3,9 +3,11 @@ package sk.stuba.fei.uim.oop;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         ArrayList<String> slova = new ArrayList<>();
         ArrayList<Integer> cisla = new ArrayList<>();
         ArrayList<Zivocich> zivocichy = new ArrayList<>();
@@ -59,6 +61,32 @@ public class Main {
                 System.out.println(elem.pocet_noh);
             }
         }
+*/
+        int n = ZKlavesnice.readInt("Zadaj prirodzene cislo: ");
+        int k = ZKlavesnice.readInt("Zadaj k, prirodzene cislo");
+        while(n < 2*k  || k < 1){
+            System.out.println("Nespravne: K musi byt viac ako 1 a n viac ako 2xk");
+            n = ZKlavesnice.readInt("Zadaj prirodzene cislo: ");
+            k = ZKlavesnice.readInt("Zadaj k, prirodzene cislo");
+        }
 
+        ArrayList<Integer> ncisel = new ArrayList<>();
+        for(int i = 0; i < n ; i++){
+            ncisel.add(i);
+        }
+
+        Iterator<Integer>iterator = ncisel.iterator();
+        int p = 0;
+        while(iterator.hasNext()){
+            var item = iterator.next();
+            if (p % k == 0){
+                iterator.remove();
+            }
+            p++;
+        }
+
+        for (var elem:ncisel){
+            System.out.println(elem);
+        }
     }
 }
